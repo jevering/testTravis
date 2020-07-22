@@ -6,7 +6,9 @@ addons:
    sonarcloud:
       organization: "jevering"
       token: travis encrypt f6536af917cae8b4caf9879c8df6b9013b290f04
-   
-script: 
-- ant build
-- sonar-scanner
+
+script:
+  - ant build
+  - sonar-scanner
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
